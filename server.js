@@ -43,7 +43,7 @@ const fastifyStatic = require('@fastify/static')
 server.register(fastifyStatic, {
   root: path.join(__dirname, 'public'),
   prefix: '/public/',
-  constraints: { host: 'example.com' },
+  constraints: { host: '' },
 })
 
 server.get('/', (req, reply) => {
