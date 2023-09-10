@@ -47,7 +47,8 @@ server.register(fastifyStatic, {
 })
 
 server.get('/nitro', (req, reply) => {
- return 'Test ok'
+  return 'nitro pc'
+})
 
 server.get('/', (req, reply) => {
   reply.sendFile('index.html')
