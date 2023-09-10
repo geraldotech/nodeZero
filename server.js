@@ -46,6 +46,9 @@ server.register(fastifyStatic, {
   constraints: { host: '' },
 })
 
+server.get('/nitro', (req, reply) => {
+ return 'Test ok'
+
 server.get('/', (req, reply) => {
   reply.sendFile('index.html')
 })
