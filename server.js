@@ -1,4 +1,14 @@
 import { fastify } from 'fastify'
+
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const path = require('path')
+
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 //import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
 
@@ -28,8 +38,16 @@ server.post('/videos', async (request, reply) => {
   return reply.status(201).send()
 })
 
-server.get('/', () => {
-  return 'Home page'
+const fastifyStatic = require('@fastify/static')
+
+server.register(fastifyStatic, {
+  root: path.join(__dirname, 'public'),
+  prefix: '/public/',
+  constraints: { host: 'example.com' },
+})
+
+server.get('/', (req, reply) => {
+  reply.sendFile('index.html')
 })
 
 server.get('/videos', async (request) => {
