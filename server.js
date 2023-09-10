@@ -28,6 +28,10 @@ server.post('/videos', async (request, reply) => {
   return reply.status(201).send()
 })
 
+server.get('/', () => {
+  return 'Home page'
+})
+
 server.get('/videos', async (request) => {
   const search = request.query.search
 
@@ -61,5 +65,5 @@ server.delete('/videos/:id', async (request, reply) => {
 
 server.listen({
   host: '0.0.0.0',
-  port: process.env.POST ?? 3333,
+  port: process.env.PORT ?? 3333,
 })
