@@ -28,6 +28,10 @@ server.post('/videos', async (request, reply) => {
   return reply.status(201).send()
 })
 
+server.get('/', () => {
+  return 'Home page'
+})
+
 server.get('/videos', async (request) => {
   const search = request.query.search
 
