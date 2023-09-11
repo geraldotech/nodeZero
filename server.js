@@ -1,7 +1,7 @@
 import { fastify } from 'fastify'
 import cors from '@fastify/cors'
-//import { createRequire } from 'module'
-//import { DatabaseMemory } from './database-memory.js'
+import { createRequire } from 'module'
+import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 import fs from 'fs'
 
 //const require = createRequire(import.meta.url)
-const path = require('path')
+//const path = require('path')
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const server = fastify()
@@ -36,12 +36,12 @@ server.post('/videos', async (request, reply) => {
 })
 
 // Static files
-const fastifyStatic = require('@fastify/static')
+/* const fastifyStatic = require('@fastify/static')
 server.register(fastifyStatic, {
   root: path.join(__dirname, 'public'),
   prefix: '/public/',
   constraints: { host: '' },
-})
+}) */
 
 // server.get('/', (req, reply) => {
 //   reply.sendFile('index.html')
