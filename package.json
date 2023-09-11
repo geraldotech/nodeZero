@@ -13,6 +13,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
     "@fastify/cors": "^8.3.0",
     "@fastify/static": "^6.11.0",
