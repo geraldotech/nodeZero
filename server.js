@@ -8,8 +8,10 @@ import { fileURLToPath } from 'url'
 
 const require = createRequire(import.meta.url)
 
-import path from 'path'
-import module from 'path'
+//import path from 'path'
+//import module from 'path'
+
+import * as path from 'node:path'
 //const path = require('path') //dont work
 //import * as path from 'path'  //dont work
 
@@ -17,7 +19,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const server = fastify()
 const path2 = dirname(__filename)
-//console.log(module)
+console.log(path)
 
 //set DataBase
 //const database = new DatabaseMemory()
