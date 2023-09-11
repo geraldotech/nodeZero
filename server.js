@@ -1,6 +1,6 @@
 import { fastify } from 'fastify'
 import cors from '@fastify/cors'
-import { createRequire } from 'module'
+//import { createRequire } from 'module'
 //import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
 import { dirname } from 'path'
@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url'
 //testing
 import fs from 'fs'
 
-const require = createRequire(import.meta.url)
+//const require = createRequire(import.meta.url)
 const path = require('path')
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
