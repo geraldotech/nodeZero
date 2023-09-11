@@ -8,17 +8,30 @@
   <body>
     <h1>Hello World 22!</h1>
     <script>
-      const url = `https://node-zero.vercel.app/videos`
+      //const BASE = `http://localhost:3333/videos`
+      const BASE = `https://node-do-zerp.onrender.com/videos`
 
       async function getvideos(url) {
         const req = await fetch(url)
         const res = await req.json()
-        console.log(res)
+        console.warn('dados from:', res)
       }
 
-      getvideos(url)
+      getvideos(BASE)
 
       console.log(`hello home`)
+
+      /*    const xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.send()
+      xhr.responseType = 'json'
+      xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log(xhr.response)
+        } else {
+          console.log(`Error: ${xhr.status}`)
+        }
+      } */
     </script>
   </body>
 </html>

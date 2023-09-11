@@ -1,25 +1,20 @@
 import { fastify } from 'fastify'
-
+import cors from '@fastify/cors'
 import { createRequire } from 'module'
-const require = createRequire(import.meta.url)
-const path = require('path')
-
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 //import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
+const require = createRequire(import.meta.url)
+const path = require('path')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const server = fastify()
 
+//set DataBase
 //const database = new DatabaseMemory()
-
 const database = new DatabasePostgres()
-
-// POST localhost:3333/videos
-// PUT localhost:3333/videos/1
 
 server.post('/videos', async (request, reply) => {
   const { title, description, duration } = request.body
@@ -38,28 +33,31 @@ server.post('/videos', async (request, reply) => {
   return reply.status(201).send()
 })
 
+// Static files
 const fastifyStatic = require('@fastify/static')
-
 server.register(fastifyStatic, {
   root: path.join(__dirname, 'public'),
   prefix: '/public/',
   constraints: { host: '' },
 })
 
-server.get('/nitro', (req, reply) => {
-  return 'nitro pc'
-})
-
 server.get('/', (req, reply) => {
   reply.sendFile('index.html')
 })
 
-server.get('/videos', async (request) => {
+server.get('/videos', async (request, reply) => {
+  reply.header('Access-Control-Allow-Origin', '*')
+  reply.header('Access-Control-Allow-Methods', 'GET')
+  reply.header('Access-Control-Allow-Headers', '*')
+
+  reply.setHeader('Access-Control-Allow-Origin', '*')
+  reply.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET')
+
   const search = request.query.search
 
   //console.log(search)
   const videos = await database.list(search)
-  //console.log(videos)
+  console.log(videos)
   return videos
 })
 
