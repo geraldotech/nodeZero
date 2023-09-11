@@ -9,12 +9,15 @@ import { fileURLToPath } from 'url'
 const require = createRequire(import.meta.url)
 
 import path from 'path'
+import module from 'path'
 //const path = require('path') //dont work
 //import * as path from 'path'  //dont work
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const server = fastify()
+const path2 = dirname(__filename)
+//console.log(module)
 
 //set DataBase
 //const database = new DatabaseMemory()
