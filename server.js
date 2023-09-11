@@ -8,15 +8,7 @@ import * as url from 'url'
 import { fileURLToPath } from 'url'
 
 const require = createRequire(import.meta.url)
-
-//import path from 'path'
-//import module from 'path'
-
-//import * as path from 'node:path'
 const path = require('node:path') //dont work
-//console.log(path)
-//import * as path from 'path'  //dont work
-
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const server = fastify()
@@ -38,7 +30,6 @@ server.post('/videos', async (request, reply) => {
   })
 
   //console.log(database.list())
-
   return reply.status(201).send()
 })
 
@@ -59,8 +50,8 @@ server.get('/videos', async (request, reply) => {
   reply.header('Access-Control-Allow-Methods', 'GET')
   reply.header('Access-Control-Allow-Headers', '*')
 
-  reply.setHeader('Access-Control-Allow-Origin', '*')
-  reply.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET')
+  /*  reply.setHeader('Access-Control-Allow-Origin', '*')
+  reply.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET') */
 
   const search = request.query.search
 
