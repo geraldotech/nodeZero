@@ -1,7 +1,7 @@
 import { fastify } from 'fastify'
 import cors from '@fastify/cors'
 import { createRequire } from 'module'
-import { DatabaseMemory } from './database-memory.js'
+//import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
 import { dirname } from 'path'
 import * as url from 'url'
@@ -83,7 +83,7 @@ server.delete('/videos/:id', async (request, reply) => {
   return reply.status(204).send()
 })
 
-server.listen({
+await server.listen({
   host: '0.0.0.0',
   port: process.env.POST ?? 3333,
 })

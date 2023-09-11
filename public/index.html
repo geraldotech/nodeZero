@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New document</title>
+    <title>Home Page</title>
   </head>
   <body>
     <h1>Hello World 3</h1>
     <script>
       //const BASE = `http://localhost:3333/videos`
-      //const BASE = `http://node-do-zerp.onrender.com/videos`
-      const BASE = `https://node-zero.vercel.app/videos`
+      const BASE = `http://node-do-zerp.onrender.com/videos`
+      //const BASE = `https://node-zero.vercel.app/videos`
 
       async function getvideos(url) {
         const req = await fetch(url)
@@ -19,8 +19,6 @@
       }
 
       getvideos(BASE)
-
-      console.log(`hello home`)
 
       /*    const xhr = new XMLHttpRequest()
       xhr.open('GET', url)
