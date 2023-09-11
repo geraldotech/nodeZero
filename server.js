@@ -9,7 +9,8 @@ import { fileURLToPath } from 'url'
 import fs from 'fs'
 
 const require = createRequire(import.meta.url)
-const path = require('path')
+const path = require('node:path')
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const server = fastify()
