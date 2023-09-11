@@ -5,12 +5,12 @@ import { DatabaseMemory } from './database-memory.js'
 import { DatabasePostgres } from './database-postgres.js'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
-//testing
-import fs from 'fs'
 
 const require = createRequire(import.meta.url)
-//const path = require('path')
-import * as path from 'path'
+
+import path from 'path'
+//const path = require('path') //dont work
+//import * as path from 'path'  //dont work
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
