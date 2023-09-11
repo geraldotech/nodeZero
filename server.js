@@ -5,6 +5,8 @@ import { createRequire } from 'module'
 import { DatabasePostgres } from './database-postgres.js'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
+//testing
+import * as fs from 'fs'
 
 const require = createRequire(import.meta.url)
 const path = require('path')
