@@ -6,7 +6,7 @@ import { DatabasePostgres } from './database-postgres.js'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 //testing
-import * as fs from 'fs'
+import fs from 'fs'
 
 const require = createRequire(import.meta.url)
 const path = require('path')
@@ -43,9 +43,9 @@ server.register(fastifyStatic, {
   constraints: { host: '' },
 })
 
-server.get('/', (req, reply) => {
-  reply.sendFile('index.html')
-})
+// server.get('/', (req, reply) => {
+//   reply.sendFile('index.html')
+// })
 
 server.get('/videos', async (request, reply) => {
   reply.header('Access-Control-Allow-Origin', '*')
