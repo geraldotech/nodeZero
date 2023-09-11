@@ -8,8 +8,8 @@ import { fileURLToPath } from 'url'
 //testing
 import fs from 'fs'
 
-//const require = createRequire(import.meta.url)
-//const path = require('path')
+const require = createRequire(import.meta.url)
+const path = require('path')
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const server = fastify()
@@ -36,16 +36,16 @@ server.post('/videos', async (request, reply) => {
 })
 
 // Static files
-/* const fastifyStatic = require('@fastify/static')
+const fastifyStatic = require('@fastify/static')
 server.register(fastifyStatic, {
   root: path.join(__dirname, 'public'),
   prefix: '/public/',
   constraints: { host: '' },
-}) */
+})
 
-// server.get('/', (req, reply) => {
-//   reply.sendFile('index.html')
-// })
+server.get('/', (req, reply) => {
+  reply.sendFile('index.html')
+})
 
 server.get('/videos', async (request, reply) => {
   reply.header('Access-Control-Allow-Origin', '*')
