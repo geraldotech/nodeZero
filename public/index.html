@@ -6,7 +6,6 @@
     <title>Home Page</title>
   </head>
   <body>
-    <h1>Hello World 3</h1>
     <script>
       //const BASE = `http://localhost:3333/videos`
       const BASE = `https://node-do-zerp.onrender.com/videos`
@@ -16,21 +15,23 @@
         const req = await fetch(url)
         const res = await req.json()
         console.warn('dados from:', res)
+        Render(res)
+      }
+
+      function Render(data) {
+        data.forEach((value) => {
+          const root = document.createElement('div')
+          const h2 = document.createElement('h2')
+          const p = document.createElement('p').cloneNode()
+
+          h2.innerText = value.title
+          p.innerText = `ID: ${value.id} - Description: ${value.description} - Duration: ${value.duration}`
+          root.append(h2, p)
+          document.body.append(root)
+        })
       }
 
       getvideos(BASE)
-
-      /*    const xhr = new XMLHttpRequest()
-      xhr.open('GET', url)
-      xhr.send()
-      xhr.responseType = 'json'
-      xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.response)
-        } else {
-          console.log(`Error: ${xhr.status}`)
-        }
-      } */
     </script>
   </body>
 </html>

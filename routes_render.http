@@ -2,9 +2,9 @@ POST https://node-do-zerp.onrender.com/videos
 Content-Type: application/json
 
 {
-    "title": "Video Node",
+    "title": "JavaScript Arrays and String Methods",
     "description": "Esse é o primeiro video",
-    "duration": 180
+    "duration": 200
 }
 
 
