@@ -6,6 +6,23 @@
     <title>Home Page</title>
   </head>
   <body>
+    <form id="sendpost">
+      <input
+        type="text"
+        value="Post from Post Ajax"
+        name="title"
+        placeholder="title"
+      />
+      <input
+        type="text"
+        value="loremipsum is a new way to"
+        name="description"
+        placeholder="description"
+        id="title"
+      />
+      <input type="text" value="200" name="duration" id="title" />
+      <input type="submit" value="Send Post" />
+    </form>
     <button>Post</button>
     <script>
       //const BASE = `http://localhost:3333/videos`
@@ -34,24 +51,34 @@
 
       getvideos(BASE)
 
-      const post = {
+      /*  const post = {
         title: 'JavaScript Arrays and String Methods',
         description: 'Esse é o primeiro video',
         duration: 200,
+      } */
+
+      const form = document.querySelector('#sendpost')
+      form.onsubmit = function (event) {
+        event.preventDefault()
+        const data = new FormData(form)
+        const dataobj = Object.fromEntries(data)
+        console.log(dataobj)
+        postDataToServer(dataobj)
       }
 
-      const baseURL2 = `https://node-do-zerp.onrender.com/videos`
-      const btn = document.querySelector('button')
-      btn.onclick = function (event) {
-        //event.preventDefault();
-        const ajaxn = new XMLHttpRequest()
-
-        ajaxn.open('POST', baseURL2)
-        ajaxn.setRequestHeader('content-Type', 'application/json')
-        const json = JSON.stringify(post)
-        //const json = JSON.stringify(Object.fromEntries(post))
-        console.log(post)
-        ajaxn.send(json)
+      function postDataToServer(post) {
+        const baseURL2 = `https://node-do-zerp.onrender.com/videos`
+        const btn = document.querySelector('button')
+        btn.onclick = function (event) {
+          //event.preventDefault();
+          const ajaxn = new XMLHttpRequest()
+          ajaxn.open('POST', baseURL2)
+          ajaxn.setRequestHeader('content-Type', 'application/json')
+          const json = JSON.stringify(post)
+          //const json = JSON.stringify(Object.fromEntries(post))
+          console.log(post)
+          ajaxn.send(json)
+        }
       }
     </script>
   </body>
