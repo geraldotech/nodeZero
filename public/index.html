@@ -91,11 +91,11 @@
         const json = JSON.stringify(post)
         //const json = JSON.stringify(Object.fromEntries(post))
         ajaxn.send(json)
-        ajaxn.onload = function () {
+        /*      ajaxn.onload = function () {
           if (ajaxn.status === 201) {
             console.log('Post successfully created!')
           }
-        }
+        } */
       }
     </script>
   </body>
