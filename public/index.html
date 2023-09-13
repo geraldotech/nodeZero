@@ -34,24 +34,23 @@
 
       getvideos(BASE)
 
+      const post = {
+        title: 'JavaScript Arrays and String Methods',
+        description: 'Esse é o primeiro video',
+        duration: 200,
+      }
+
       const baseURL2 = `https://node-do-zerp.onrender.com/videos`
       const btn = document.querySelector('button')
       btn.onclick = function (event) {
         //event.preventDefault();
         const ajaxn = new XMLHttpRequest()
-        const data = [
-          {
-            title: 'JavaScript Arrays and String Methods',
-            description: 'Esse é o primeiro video',
-            duration: 200,
-          },
-        ]
 
         ajaxn.open('POST', baseURL2)
         ajaxn.setRequestHeader('content-Type', 'application/json')
-        const json = JSON.stringify(data)
-        //const json = JSON.stringify(Object.fromEntries(data))
-        console.log(data)
+        const json = JSON.stringify(post)
+        //const json = JSON.stringify(Object.fromEntries(post))
+        console.log(post)
         ajaxn.send(json)
       }
     </script>
