@@ -90,8 +90,12 @@
         ajaxn.setRequestHeader('content-Type', 'application/json')
         const json = JSON.stringify(post)
         //const json = JSON.stringify(Object.fromEntries(post))
-        console.log(post)
         ajaxn.send(json)
+        ajaxn.onload = function () {
+          if (ajaxn.status === 201) {
+            console.log('Post successfully created!')
+          }
+        }
       }
     </script>
   </body>
