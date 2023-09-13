@@ -6,6 +6,7 @@
     <title>Home Page</title>
   </head>
   <body>
+    <h1>Method: POST</h1>
     <form id="sendpost">
       <input
         type="text"
@@ -51,12 +52,28 @@
 
       getvideos(BASE)
 
-      /*  const post = {
+      //post scratch
+      const baseURL2 = `https://node-do-zerp.onrender.com/videos`
+      const post = {
         title: 'JavaScript Arrays and String Methods',
         description: 'Esse é o primeiro video',
-        duration: 200,
-      } */
+        duration: 201,
+      }
 
+      const btn = document.querySelector('button')
+      btn.onclick = function (event) {
+        //event.preventDefault();
+        const ajaxn = new XMLHttpRequest()
+        ajaxn.open('POST', baseURL2)
+        ajaxn.setRequestHeader('content-Type', 'application/json')
+        const json = JSON.stringify(post)
+        //const json = JSON.stringify(Object.fromEntries(post))
+        console.log(post)
+        ajaxn.send(json)
+      }
+      //post scratch ends
+
+      //post from form
       const form = document.querySelector('#sendpost')
       form.onsubmit = function (event) {
         event.preventDefault()
@@ -67,18 +84,14 @@
       }
 
       function postDataToServer(post) {
-        const baseURL2 = `https://node-do-zerp.onrender.com/videos`
-        const btn = document.querySelector('button')
-        btn.onclick = function (event) {
-          //event.preventDefault();
-          const ajaxn = new XMLHttpRequest()
-          ajaxn.open('POST', baseURL2)
-          ajaxn.setRequestHeader('content-Type', 'application/json')
-          const json = JSON.stringify(post)
-          //const json = JSON.stringify(Object.fromEntries(post))
-          console.log(post)
-          ajaxn.send(json)
-        }
+        //event.preventDefault();
+        const ajaxn = new XMLHttpRequest()
+        ajaxn.open('POST', baseURL2)
+        ajaxn.setRequestHeader('content-Type', 'application/json')
+        const json = JSON.stringify(post)
+        //const json = JSON.stringify(Object.fromEntries(post))
+        console.log(post)
+        ajaxn.send(json)
       }
     </script>
   </body>
