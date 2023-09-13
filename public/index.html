@@ -78,6 +78,7 @@
         ajaxn.setRequestHeader('content-Type', 'application/json')
         const json = JSON.stringify(post)
         //const json = JSON.stringify(Object.fromEntries(post))
+        console.error(post)
         ajaxn.send(json)
       }
       //post scratch ends
@@ -97,12 +98,9 @@
         ajaxn.open('POST', baseURL2)
         ajaxn.setRequestHeader('content-Type', 'application/json')
         const json = JSON.stringify(FormObj)
+        //const json = JSON.stringify(Object.fromEntries(post))
+        console.warn(FormObj)
         ajaxn.send(FormObj)
-        ajaxn.onload = function () {
-          if (ajaxn.status === 201) {
-            console.log('Post successfully created!')
-          }
-        }
       }
     </script>
   </body>
