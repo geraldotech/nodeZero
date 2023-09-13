@@ -49,7 +49,9 @@
 
         ajaxn.open('POST', baseURL2)
         ajaxn.setRequestHeader('content-Type', 'application/json')
-        const json = JSON.stringify(Object.fromEntries(data))
+        const json = JSON.stringify(data)
+        //const json = JSON.stringify(Object.fromEntries(data))
+        console.log(data)
         ajaxn.send(json)
       }
     </script>
