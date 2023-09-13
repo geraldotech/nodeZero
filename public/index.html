@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
+    <style>
+      section input[value] {
+        background: gray;
+        border: 1px solid;
+        width: max-content;
+      }
+      button {
+        margin: 20px 0;
+      }
+    </style>
   </head>
   <body>
     <h1>Method: POST</h1>
@@ -24,7 +34,8 @@
       <input type="text" value="200" name="duration" id="title" />
       <input type="submit" value="Send Post" />
     </form>
-    <button>Post</button>
+    <hr />
+    <button>Direct Post</button>
     <script>
       //const BASE = `http://localhost:3333/videos`
       const BASE = `https://node-do-zerp.onrender.com/videos`
@@ -39,14 +50,13 @@
 
       function Render(data) {
         data.forEach((value) => {
-          const root = document.createElement('div')
           const h2 = document.createElement('h2')
-          const p = document.createElement('p').cloneNode()
+          const section = document.createElement('section').cloneNode()
 
           h2.innerText = value.title
-          p.innerText = `ID: ${value.id} - Description: ${value.description} - Duration: ${value.duration}`
-          root.append(h2, p)
-          document.body.append(root)
+          section.innerHTML = `ID:<input value="${value.id}" onFocus="this.select()" /> - Description: ${value.description} - Duration: ${value.duration}`
+          document.body.append(section)
+          document.body.append(h2)
         })
       }
 
@@ -57,7 +67,7 @@
       const post = {
         title: 'JavaScript Arrays and String Methods',
         description: 'Esse é o primeiro video',
-        duration: 201,
+        duration: 204,
       }
 
       const btn = document.querySelector('button')
@@ -68,7 +78,7 @@
         ajaxn.setRequestHeader('content-Type', 'application/json')
         const json = JSON.stringify(post)
         //const json = JSON.stringify(Object.fromEntries(post))
-        console.log(post)
+        console.error(post)
         ajaxn.send(json)
       }
       //post scratch ends
@@ -79,19 +89,18 @@
         event.preventDefault()
         const data = new FormData(form)
         const dataobj = Object.fromEntries(data)
-        console.log(dataobj)
         postDataToServer(dataobj)
       }
 
-      function postDataToServer(post) {
+      function postDataToServer(FormObj) {
         //event.preventDefault();
         const ajaxn = new XMLHttpRequest()
         ajaxn.open('POST', baseURL2)
         ajaxn.setRequestHeader('content-Type', 'application/json')
-        const json = JSON.stringify(post)
+        const json = JSON.stringify(FormObj)
         //const json = JSON.stringify(Object.fromEntries(post))
-        console.log(post)
-        ajaxn.send(json)
+        console.warn(FormObj)
+        ajaxn.send(FormObj)
       }
     </script>
   </body>
