@@ -32,6 +32,7 @@
       <input type="text" value="200" name="duration" id="title" />
       <input type="submit" value="Send Post" />
     </form>
+    <p id="postSuccess"></p>
     <h1>Method: DELETE</h1>
     <form id="DeletePost">
       <input type="text" name="id" placeholder="Post Id" />
@@ -104,8 +105,13 @@
         ajaxn.send(json)
 
         ajaxn.onload = function () {
+          const postSuccess = document.querySelector('#postSuccess')
           if (ajaxn.status === 201) {
-            console.log('Post successfully created!')
+            // console.log('Post successfully created!')
+            postSuccess.textContent = 'Post successfully created!'
+            setTimeout(function () {
+              postSuccess.textContent = ''
+            }, 2000)
           }
         }
       }
