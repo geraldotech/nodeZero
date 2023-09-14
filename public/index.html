@@ -39,14 +39,12 @@
 
       function Render(data) {
         data.forEach((value) => {
-          const root = document.createElement('div')
           const h2 = document.createElement('h2')
           const p = document.createElement('p').cloneNode()
 
           h2.innerText = value.title
-          p.innerText = `ID: ${value.id} - Description: ${value.description} - Duration: ${value.duration}`
-          root.append(h2, p)
-          document.body.append(root)
+          p.innerHTML = `ID: <input type="text" value="${value.id}" onclick="this.focus();this.select()">  - Description: ${value.description} - Duration: ${value.duration}`
+          document.body.append(h2, p)
         })
       }
 
