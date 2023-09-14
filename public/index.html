@@ -90,6 +90,8 @@
         ajaxn.setRequestHeader('content-Type', 'application/json')
         const json = JSON.stringify(post)
         //const json = JSON.stringify(Object.fromEntries(post))
+
+        ajaxn.send(json)
       }
     </script>
   </body>
