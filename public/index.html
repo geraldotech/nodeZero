@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
     <style>
-      form {
-        margin: 40px 0;
+      input {
+        margin: 10px 0;
       }
     </style>
   </head>
   <body>
+    <button>Single Post</button>
+    <hr />
     <h1>Method: POST</h1>
     <form id="sendpost">
       <input
@@ -29,9 +31,7 @@
       <input type="text" value="200" name="duration" id="title" />
       <input type="submit" value="Send Post" />
     </form>
-
-    <button>Single Post</button>
-
+    <h1>Method: DELETE</h1>
     <form id="DeletePost">
       <input type="text" name="id" placeholder="Post Id" />
       <input type="submit" value="Delete Post" />
