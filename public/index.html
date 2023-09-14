@@ -3,11 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Node and PostGres from Zero</title>
     <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       input {
         margin: 10px 0;
         height: 20px;
+        display: block;
+      }
+      input[type='text'] {
+        width: 90%;
+        padding: 10px;
+      }
+
+      #postSuccess {
+        color: seagreen;
+      }
+      body {
+        padding: 3vh;
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+
+      form,
+      p,
+      h1,
+      h2 {
+        margin: 10px 0;
+      }
+      .posts {
+        font-weight: bold;
+        text-align: center;
       }
     </style>
   </head>
@@ -33,15 +63,17 @@
       <input type="submit" value="Send Post" />
     </form>
     <p id="postSuccess"></p>
+    <hr />
     <h1>Method: DELETE</h1>
     <form id="DeletePost">
       <input type="text" name="id" placeholder="Post Id" />
       <input type="submit" value="Delete Post" />
     </form>
+    <hr />
+    <h1 class="posts">Posts:</h1>
     <script>
       //const BASE = `http://localhost:3333/videos`
       const BASE = `https://node-do-zerp.onrender.com/videos`
-      //const BASE = `https://node-zero.vercel.app/videos`
 
       async function getvideos(url) {
         const req = await fetch(url)
@@ -56,7 +88,7 @@
           const p = document.createElement('p').cloneNode()
 
           h2.innerText = value.title
-          p.innerHTML = `ID: <input type="text" value="${value.id}" onclick="this.focus();this.select()">  - Description: ${value.description} - Duration: ${value.duration}`
+          p.innerHTML = `ID: <input type="url" value="${value.id}" onclick="this.focus();this.select()">  - Description: ${value.description} - Duration: ${value.duration}`
           document.body.append(h2, p)
         })
       }
