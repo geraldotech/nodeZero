@@ -125,11 +125,8 @@
           'application/x-www-form-urlencoded'
         )
         deljax.send()
-        deljax.onload = function () {
-          if (deljax.status === 201) {
-            console.log('Post delete successfully!')
-          }
-        }
+        //clean form after click
+        deleteForm.reset()
       }
     </script>
   </body>
