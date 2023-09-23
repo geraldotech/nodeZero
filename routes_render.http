@@ -2,9 +2,15 @@ POST https://node-do-zerp.onrender.com/videos
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "title": "Video Node",
     "description": "Esse é o primeiro video",
     "duration": 180
+=======
+    "title": "JavaScript Arrays and String Methods",
+    "description": "Esse é o primeiro video",
+    "duration": 200
+>>>>>>> 4ddc887decd5be39687b56f96df2eab7ad30f9f2
 }
 
 
@@ -29,5 +35,9 @@ Content-Type: application/json
 
 ###
 
+<<<<<<< HEAD
 DELETE https://node-do-zerp.onrender.com/videos/8cac810c-484d-44e9-93ef-d97d90542196	
+=======
+DELETE https://node-do-zerp.onrender.com/videos/c5bb021b-6292-4536-9704-d6b895d51c3e
+>>>>>>> 4ddc887decd5be39687b56f96df2eab7ad30f9f2
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node and PostGres from Zero</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      input {
+        margin: 10px 0;
+        height: 20px;
+        display: block;
+      }
+      input[type='text'] {
+        width: 90%;
+        padding: 10px;
+      }
+
+      #postSuccess {
+        color: seagreen;
+      }
+      body {
+        padding: 3vh;
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+
+      form,
+      p,
+      h1,
+      h2 {
+        margin: 10px 0;
+      }
+      .posts {
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Single Post</button>
+    <hr />
+    <h1>Method: POST</h1>
+    <form id="sendpost">
+      <input
+        type="text"
+        value="Post from Post Ajax"
+        name="title"
+        placeholder="title"
+      />
+      <input
+        type="text"
+        value="loremipsum is a new way to"
+        name="description"
+        placeholder="description"
+        id="title"
+      />
+      <input type="text" value="200" name="duration" id="title" />
+      <input type="submit" value="Send Post" />
+    </form>
+    <p id="postSuccess"></p>
+    <hr />
+    <h1>Method: DELETE</h1>
+    <form id="DeletePost">
+      <input type="text" name="id" placeholder="Post Id" />
+      <input type="submit" value="Delete Post" />
+    </form>
+    <hr />
+    <h1 class="posts">Posts:</h1>
+    <script>
+      //const BASE = `http://localhost:3333/videos`
+      const BASE = `https://node-do-zerp.onrender.com/videos`
+
+      async function getvideos(url) {
+        const req = await fetch(url)
+        const res = await req.json()
+        console.warn('dados from:', res)
+        Render(res)
+      }
+
+      function Render(data) {
+        data.forEach((value) => {
+          const h2 = document.createElement('h2')
+          const p = document.createElement('p').cloneNode()
+
+          h2.innerText = value.title
+          p.innerHTML = `ID: <input type="url" value="${value.id}" onclick="this.focus();this.select()">  - Description: ${value.description} - Duration: ${value.duration}`
+          document.body.append(h2, p)
+        })
+      }
+
+      getvideos(BASE)
+
+      //post scratch
+      const baseURL2 = `https://node-do-zerp.onrender.com/videos`
+      const post = {
+        title: 'JavaScript Arrays and String Methods',
+        description: 'Esse é o primeiro video',
+        duration: 201,
+      }
+
+      const btn = document.querySelector('button')
+      btn.onclick = function (event) {
+        //event.preventDefault();
+        const ajaxn = new XMLHttpRequest()
+        ajaxn.open('POST', baseURL2)
+        ajaxn.setRequestHeader('content-Type', 'application/json')
+        const json = JSON.stringify(post)
+        //const json = JSON.stringify(Object.fromEntries(post))
+        console.log(post)
+        ajaxn.send(json)
+      }
+      //post scratch ends
+
+      //post from form
+      const form = document.querySelector('#sendpost')
+      form.onsubmit = function (event) {
+        event.preventDefault()
+        const data = new FormData(form)
+        const dataobj = Object.fromEntries(data)
+        console.log(dataobj)
+        postDataToServer(dataobj)
+      }
+
+      function postDataToServer(post) {
+        //event.preventDefault();
+        const ajaxn = new XMLHttpRequest()
+        ajaxn.open('POST', baseURL2)
+        ajaxn.setRequestHeader('content-Type', 'application/json')
+        const json = JSON.stringify(post)
+        //const json = JSON.stringify(Object.fromEntries(post))
+
+        ajaxn.send(json)
+
+        ajaxn.onload = function () {
+          const postSuccess = document.querySelector('#postSuccess')
+          if (ajaxn.status === 201) {
+            // console.log('Post successfully created!')
+            postSuccess.textContent = 'Post successfully created!'
+            setTimeout(function () {
+              postSuccess.textContent = ''
+            }, 2000)
+          }
+        }
+      }
+
+      //delete
+
+      const deleteForm = document.querySelector('#DeletePost')
+
+      deleteForm.onsubmit = function (event) {
+        event.preventDefault()
+        const deljax = new XMLHttpRequest()
+        const data = new FormData(deleteForm)
+        //name.id
+
+        deljax.open('DELETE', baseURL2 + '/' + data.get('id'))
+        deljax.setRequestHeader(
+          'Content-type',
+          'application/x-www-form-urlencoded'
+        )
+        deljax.send()
+        //clean form after click
+        deleteForm.reset()
+      }
+    </script>
+  </body>
+</html>
