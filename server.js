@@ -33,13 +33,6 @@ server.post('/videos', async (request, reply) => {
   return reply.status(201).send()
 })
 
-<<<<<<< HEAD
-server.get('/', () => {
-  return 'Home page'
-})
-
-server.get('/videos', async (request) => {
-=======
 // Static files
 const fastifyStatic = require('@fastify/static')
 server.register(fastifyStatic, {
@@ -60,7 +53,6 @@ server.get('/videos', async (request, reply) => {
   /*  reply.setHeader('Access-Control-Allow-Origin', '*')
   reply.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET') */
 
->>>>>>> 4ddc887decd5be39687b56f96df2eab7ad30f9f2
   const search = request.query.search
 
   //console.log(search)
@@ -93,5 +85,5 @@ server.delete('/videos/:id', async (request, reply) => {
 
 await server.listen({
   host: '0.0.0.0',
-  port: process.env.PORT ?? 3333,
+  port: process.env.POST ?? 3333,
 })
