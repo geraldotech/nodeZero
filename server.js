@@ -65,14 +65,15 @@ server.get('/videos/:id', async (request, reply) => {
  const videoid = request.params.id
 
   //console.log(search)
-  const videos = await database.list(videoid)
+   const search = request.query.search
+
+  //console.log(search)
+  const videos = await database.list(search)
   console.log(videos)
   return videos
 })
 
 // Route Parameters
-
-
 server.put('/videos/:id', async (request, reply) => {
   const videoid = request.params.id
   const { title, description, duration } = request.body
