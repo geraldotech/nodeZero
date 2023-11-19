@@ -60,16 +60,17 @@ server.get('/videos', async (request, reply) => {
   console.log(videos)
   return videos
 })
-
+//✅ Router to single posts, just make a find to server obj that is requested, 
+//thanks too https://www.sitepoint.com/create-rest-api-fastify/
+// openned Access-Control to allow CORS
 server.get('/videos/:id', async (request, reply) => {
- reply.header('Access-Control-Allow-Origin', '*')
+  reply.header('Access-Control-Allow-Origin', '*')
   reply.header('Access-Control-Allow-Methods', 'GET')
   reply.header('Access-Control-Allow-Headers', '*')
   
- const videoid = request.params.id
-   const search = request.query.search
+  const videoid = request.params.id
+  const search = request.query.search
 
-  //console.log(search)
   const videos = await database.list(search)
   const single = videos.find(post => post.id == videoid)
   return single
