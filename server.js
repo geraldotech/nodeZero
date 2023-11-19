@@ -69,8 +69,8 @@ server.get('/videos/:id', async (request, reply) => {
 
   //console.log(search)
   const videos = await database.list(search)
-  console.log(videos)
-  return videos
+  const single = videos.find(id => id == videoid)
+  return single
 })
 
 // Route Parameters
