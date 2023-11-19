@@ -62,9 +62,11 @@ server.get('/videos', async (request, reply) => {
 })
 
 server.get('/videos/:id', async (request, reply) => {
+ reply.header('Access-Control-Allow-Origin', '*')
+  reply.header('Access-Control-Allow-Methods', 'GET')
+  reply.header('Access-Control-Allow-Headers', '*')
+  
  const videoid = request.params.id
-
-  //console.log(search)
    const search = request.query.search
 
   //console.log(search)
