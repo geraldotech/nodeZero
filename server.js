@@ -45,6 +45,19 @@ server.get('/', (req, reply) => {
   reply.sendFile('index.html')
 })
 
+server.get('/status', (req, reply) => {
+  reply.header('Access-Control-Allow-Origin', '*')
+  reply.header('Access-Control-Allow-Methods', 'GET')
+  //res.send('API ok')
+  return reply
+  .code(200)
+  .header('Content-Type', 'application/json; charset=utf-8')
+  .send(
+    { status: 200, message: 'API running' 
+    
+    })
+})
+
 server.get('/videos', async (request, reply) => {
   reply.header('Access-Control-Allow-Origin', '*')
   reply.header('Access-Control-Allow-Methods', 'GET')
