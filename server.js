@@ -114,3 +114,18 @@ await server.listen({
   host: '0.0.0.0',
   port: process.env.POST ?? 3333,
 })
+
+
+/* always online */
+async function getServerStatus(url){
+  const req = await fetch(url)
+  const data = await req.json()
+  console.log(data)
+  console.log(new Date())
+}
+
+
+setInterval(() => {  
+  console.log(`always online is running`)
+  getServerStatus("https://node-do-zerp.onrender.com/status")
+}, 60000)
