@@ -124,8 +124,9 @@ async function getServerStatus(url){
   console.log(new Date())
 }
 
-
+// 30 minutes * 60 seconds * 1000 milliseconds = 1,800,000 milliseconds
+// Set the interval to run every 30 minutes
 setInterval(() => {  
   console.log(`always online is running`)
   getServerStatus("https://node-do-zerp.onrender.com/status")
-}, 60000)
+}, 1800000)
