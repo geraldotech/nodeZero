@@ -11,8 +11,8 @@ Module not found in Render? Try it in `package.json`
 
 ### Postgres on [https://neon.tech/](https://neon.tech/)
 
-### Live [https://node-do-zerp.onrender.com/](https://node-do-zerp.onrender.com/)
+### Live backend [https://node-do-zerp.onrender.com/](https://node-do-zerp.onrender.com/)
+### Live frontend [https://node-zero-vuejs-render.vercel.app](https://node-zero-vuejs-render.vercel.app/) to see render this posts using this project with front and back handler single posts find.
 
-### VueJS_blogger_render
 
-- checktout [https://node-zero-vuejs-render.vercel.app](https://node-zero-vuejs-render.vercel.app/) to see render this posts using this project with front and back handler single posts find.
+
